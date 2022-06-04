@@ -7,7 +7,6 @@ package com.lt.bean;
 public class Professor {
 
 	private String profName;
-
 	private String department;
 	private String designation;
 

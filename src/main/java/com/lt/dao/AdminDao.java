@@ -2,26 +2,22 @@ package com.lt.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Report;
-import com.lt.bean.Student;
-import com.lt.service.impl.AdminServiceImpl;
-import com.lt.service.impl.StudentServiceImpl;
 
 @Repository
 public class AdminDao implements AdminDaoInterface {
 
-	AdminServiceImpl adminServiceImpl = new AdminServiceImpl();
 	@Autowired
 	private StudentDao studentDao;
+	
+	static List<Course> courseList = new ArrayList<Course>();
 
 	/**
 	 * 
@@ -63,41 +59,15 @@ public class AdminDao implements AdminDaoInterface {
 	 * return List
 	 */
 	@Override
-	public List<Course> addCourse() {
-		List<Course> courseList = new ArrayList<Course>();
-		System.out.println(" Enter the no of  Courses to add");
-		Scanner sc = new Scanner(System.in);
-		int count = sc.nextInt();
-		for (int i = 1; i <= count; i++) {
-			Course course = new Course();
-			System.out.println(" Enter CourseCode , CourseName, isoffered,  Instructor Name");
-			String courseCode = sc.next();
-			String courseName = sc.next();
-			Boolean isOffered = sc.nextBoolean();
-			String instructorName = sc.next();
+	public List<Course> addCourse(List<Course> cList) {
 
-			course.setCourseCode(courseCode);
-			course.setCourseName(courseName);
-			course.setOffered(isOffered);
-			course.setInstructor(instructorName);
-			courseList.add(course);
-
-		}
-		System.out.println(" Enter 1 to display CourseList :");
-		int b = sc.nextInt();
-		if (b == 1) {
-			for (Course co : courseList) {
-				System.out.println(" Course Code:-  " + co.getCourseCode() + " \n CourseName :- " + co.getCourseName()
-						+ "\n Course is Offered:- " + co.isOffered() + "\n Intrsuctor Name:-" + co.getInstructor());
-				System.out.println();
-			}
-			System.out.println(" Redirecting to main menu...");
-			//adminServiceImpl.loginList();
-//		} else if (b == 2) {
-//			adminServiceImpl.loginList();
-//		}
-		//System.out.println("inside add course" + courseList);
-		
+		for (Course course : cList) {
+			Course courseObj=new Course();
+			courseObj.setCourseCode(course.getCourseCode());
+			courseObj.setCourseName(course.getCourseName());
+			courseObj.setIsOffered(course.getIsOffered());
+			courseObj.setInstructor(course.getInstructor());
+			courseList.add(courseObj);
 		}
 		return courseList;
 	}
@@ -108,25 +78,17 @@ public class AdminDao implements AdminDaoInterface {
 	 * return nothing
 	 */
 	@Override
-	public void removeCourse(List<Course> couserList) {
-
-		System.out.println(couserList);
-		System.out.println(" Enter the Course Name to Remove");
-		Scanner sc = new Scanner(System.in);
-		String name = sc.next();
-		List<Course> cList = new ArrayList<Course>();
-
-		couserList.stream().filter(item -> item.getCourseName().equals(name)).forEach(item -> {
-
-			cList.add(item);
-		});
-		couserList.removeAll(cList);
-
-		System.out.println(" Course Removed Successfully!!  " );
-		couserList.stream().forEach(System.out::println);
+	public String removeCourse(String courseCode) {
 		
-		System.out.println(" Redirecting to main menu...");
-		adminServiceImpl.loginList();
+		List<Course> cList=courseList.stream().filter(n->n.getCourseCode().equals(courseCode)).collect(Collectors.toList());
+		courseList.removeAll(cList);
+		return "Removed Succesfully";
+	}
+
+	@Override
+	public List<Course> courses() {
+		
+		return courseList;
 	}
 
 }

@@ -1,22 +1,55 @@
 package com.lt.bean;
 
+import java.util.List;
+
 public class Student {
 
 	private String studentId;
 	private String branch;
-	private String grade;
-	private String studentName;;
-	private String passWord;
-
-	
-
+    private List<Course> courses;
+	private String studentName;
+	/**
+	 * @return the studentId
+	 */
+	public String getStudentId() {
+		return studentId;
+	}
+	/**
+	 * @param studentId the studentId to set
+	 */
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+	/**
+	 * @return the branch
+	 */
+	public String getBranch() {
+		return branch;
+	}
+	/**
+	 * @param branch the branch to set
+	 */
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+	/**
+	 * @return the courses
+	 */
+	public List<Course> getCourses() {
+		return courses;
+	}
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
+	}
 	/**
 	 * @return the studentName
 	 */
 	public String getStudentName() {
 		return studentName;
 	}
-
 	/**
 	 * @param studentName the studentName to set
 	 */
@@ -24,48 +57,6 @@ public class Student {
 		this.studentName = studentName;
 	}
 
-	/**
-	 * @return the passWord
-	 */
-	public String getPassWord() {
-		return passWord;
-	}
-
-	/**
-	 * @param passWord the passWord to set
-	 */
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
-	}
-
-	/**
-	 * @return the grade
-	 */
-	public String getGrade() {
-		return grade;
-	}
-
-	/**
-	 * @param grade the grade to set
-	 */
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
-
-	public String getStudentId() {
-		return studentId;
-	}
-
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
-	}
-
-	public String getBranch() {
-		return branch;
-	}
-
-	public void setBranch(String branch) {
-		this.branch = branch;
-	}
+	
 
 }

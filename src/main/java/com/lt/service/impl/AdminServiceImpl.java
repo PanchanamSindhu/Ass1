@@ -27,11 +27,10 @@ import com.lt.service.AdminService;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-	Admin admin = new Admin();
-	List<Course> course=new ArrayList<Course>();
-	
 	@Autowired
 	private AdminDao adminDao;
+	
+	static List<Course> CourseList=new ArrayList<Course>();
 
 	/**
 	 * This method allows user to add  professor. 
@@ -39,11 +38,11 @@ public class AdminServiceImpl implements AdminService {
 	 * @return nothing.
 	 */
 	@Override
-	public List<Professor> addProfessor(List<Professor> pf ) {
-		 List<Professor> pList=new ArrayList<Professor>();
-		
+	public List<Professor> addProfessor(List<Professor> pf) {
+		List<Professor> pList = new ArrayList<Professor>();
+
 		pList.addAll(adminDao.addProfessor(pf));
-		return  pList;
+		return pList;
 	}
 
 	/**
@@ -53,10 +52,7 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public void approveStudents() {
-		// TODO Auto-generated method stub
-		// adminDao.approveStudents();
-		AdminDao adminDao = new AdminDao();
-		adminDao.approveStudents();
+		
 	}
 
 	/**
@@ -66,9 +62,9 @@ public class AdminServiceImpl implements AdminService {
 	 */
 	@Override
 	public Report generateReportCard(int id) {
-		// TODO Auto-generated method stub
+
 		return adminDao.generateReportCard(id);
-		
+
 	}
 
 	/**
@@ -77,64 +73,34 @@ public class AdminServiceImpl implements AdminService {
 	 * @return List.
 	 */
 	@Override
-	public void addCourse() {
-		// TODO Auto-generated method stub
-		
-		AdminDao adminDao = new AdminDao();
-		course.addAll(adminDao.addCourse());
-		System.out.println(" COURSES ADDED :");
-		course.stream().forEach(System.out::println);
-		//System.out.println("courses :"+course);
-		loginList();
+	public List<Course> addCourse(List<Course> course1) {
 
-	}
-	/**
-	 * This method displays admin menu. 
-	 * @param unused
-	 * @return nothing.
-	 */
-	
-	@Override
-	public void loginList() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(" 1 - Add Professor ");
-		System.out.println(" 2 - Approve Students");
-		System.out.println(" 3 - Generate Report Card ");
-		System.out.println(" 4 - Add Course ");
-		System.out.println(" 5 - Remove Course ");
-		System.out.println(" 6 - Logout ");
-		int a = sc.nextInt();
-		List<Course> course=new ArrayList<Course>();
-
-		if (a == 1) {
-			//addProfessor();
-		} else if (a == 2) {
-			approveStudents();
-		} else if (a == 3) {
-			//generateReportCard();
-		} else if (a == 4) {
-			addCourse();
-		} else if (a == 5) {
-
-			removeCourse();
-		}
-		else if (a == 6) {
-
-			//CRSApplication.optionSelect();
-		}
+		CourseList.addAll(adminDao.addCourse(course1));
+		return CourseList;
 
 	}
 
 	/**
 	 * This method allows user to remove  courses. 
 	 * @param unused
+	 * @return String.
+	 */
+	@Override
+	public String removeCourse(String courseId) {
+		String msg = adminDao.removeCourse(courseId);
+		return msg;
+
+	}
+
+	/**
+	 * This method allows user to view all  courses. 
+	 * @param unused
 	 * @return List.
 	 */
 	@Override
-	public void removeCourse() {
-		AdminDao adminDao = new AdminDao();
-		adminDao.removeCourse(course);
-
+	public List<Course> courses() {
+		
+		return adminDao.courses();
 	}
 
 }

@@ -9,8 +9,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.lt.bean.Course;
 import com.lt.bean.Report;
 import com.lt.exception.CourseNotFoundException;
 import com.lt.exception.PaymentDeclineException;
@@ -18,6 +20,7 @@ import com.lt.service.impl.StudentServiceImpl;
 
 @Repository
 public class StudentDao implements StudentDaoInterface {
+
 
 	@Override
 	public void registerCourse(String inp) {
@@ -36,8 +39,7 @@ public class StudentDao implements StudentDaoInterface {
 				System.out.println(e);
 			}
 		}
-		StudentServiceImpl st = new StudentServiceImpl();
-		st.studentMenu();
+		
 	}
 
 	@Override
@@ -72,18 +74,6 @@ public class StudentDao implements StudentDaoInterface {
 
 	}
 
-	@Override
-	public ArrayList viewCatalog() {
-
-		Stream<String> stream = Stream.of("Java", "Python", "Big Data", "Cloud");
-
-		List<String> list = stream.collect(Collectors.toList());
-
-		ArrayList<String> arrayList = new ArrayList<String>(list);
-
-		return arrayList;
-
-	}
 
 	@Override
 	public void payFee(int i) {
@@ -183,7 +173,7 @@ public class StudentDao implements StudentDaoInterface {
 
 		ArrayList<String> courselist = new ArrayList<String>(Arrays.asList("Java", "Python", "Big Data", "Cloud"));
 		ArrayList courses = new ArrayList();
-		viewCatalog();
+	
 
 		System.out.println("If you want to add course, press 1");
 

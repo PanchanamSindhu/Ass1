@@ -1,7 +1,9 @@
 package com.lt.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.lt.bean.Course;
 import com.lt.bean.Report;
 
 /**
@@ -15,8 +17,6 @@ public interface StudentDaoInterface {
 	public void registerCourse(String inp);
 
 	public Report viewreportcard(int i);
-
-	public ArrayList viewCatalog();
 
 	public void payFee(int i);
 

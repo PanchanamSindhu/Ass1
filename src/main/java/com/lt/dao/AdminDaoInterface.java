@@ -20,9 +20,10 @@ public interface AdminDaoInterface {
 
 	public Report generateReportCard(int id);
 
-	public List<Course> addCourse();
+	public List<Course> addCourse(List<Course> courseList);
 	
-	public void removeCourse(List<Course> course);
-	
+	public String removeCourse(String CouseID);
+
+	public List<Course> courses();
 
 }

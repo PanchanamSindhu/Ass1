@@ -1,7 +1,9 @@
 package com.lt.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import com.lt.bean.Course;
 import com.lt.bean.Report;
 
 /**
@@ -16,7 +18,7 @@ public interface StudentService {
 
 	public Report viewreportcard(int id);
 
-	public void viewCatalog();
+	public List<Course> viewCatalog();
 
 	public void payFee();
 
@@ -24,6 +26,5 @@ public interface StudentService {
 	
 	public void viewStudents();
 	
-	public void studentMenu();
 
 }

@@ -2,12 +2,15 @@ package com.lt.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lt.bean.Course;
 import com.lt.bean.Report;
+import com.lt.dao.AdminDao;
 import com.lt.dao.StudentDao;
 import com.lt.service.StudentService;
 
@@ -15,117 +18,55 @@ import com.lt.service.StudentService;
 public class StudentServiceImpl implements StudentService {
 
 	@Autowired
-	private StudentDao student;
+	private StudentDao studentDao;
+	
+	@Autowired
+	private AdminDao adminDao;
+	
+	@Override
+	public List<Course> viewCatalog() {
+		return adminDao.courses();
+		
+	}
 	@Override
 	public void registerCourse(String input) {
-		// TODO Auto-generated method stub
-		StudentDao ssd = new StudentDao();
-		ssd.registerCourse(input);
+		
+		studentDao.registerCourse(input);
 
 	}
 
 	@Override
 	public Report viewreportcard(int id) {
-//		StudentDao ssd = new StudentDao();
-//		Scanner sc = new Scanner(System.in);
-//		System.out.println("Enter your ID : ");
-//		int id = sc.nextInt();
-		
-		return student.viewreportcard(id);
-		
-		
 
+		return studentDao.viewreportcard(id);
+		
 	}
 
-	@Override
-	public void viewCatalog() {
-
-		StudentDao ssd = new StudentDao();
-		ArrayList resultlist = (ArrayList) ssd.viewCatalog();
-
-		System.out.println(" Courses to Register :");
-		for (int i = 0; i < resultlist.size(); i++) {
-			System.out.println(i + 1 + "." + resultlist.get(i) +"\n");
-		}
-
-	}
-	
 	@Override
 	public void viewStudents() {
 		
-		StudentDao studentDao = new StudentDao();
+		
 		studentDao.StudentDetails();
 	}
 
 	@Override
 	public void payFee() {
 		// TODO Auto-generated method stub
-		StudentDao ssd = new StudentDao();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter your ID : ");
-		int i = sc.nextInt();
-		ssd.payFee(i);
+		
+		//studentDao.payFee(i);
 
 	}
 
 	@Override
 	public void course() {
 		// TODO Auto-generated method stub
-		StudentDao ssd = new StudentDao();
+	
 		ArrayList a = new ArrayList();
-		a = ssd.course();
+		a = studentDao.course();
 
 	}
-	@Override
-	public void studentMenu() {
 
-		LocalDateTime localDateTime = LocalDateTime.now();
-		System.out.println("Student Logged in at:  " + localDateTime);
-		System.out.println(
-				"1.Register a Course\n2.View GradeCard\n3.View Catalog\n4.Add/Delete Course \n5.Pay Fee\n6.Exit ");
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
 
-		switch (input) {
-
-		case 1:
-			viewCatalog();
-			System.out.println("Please select the Course\n");
-			String inp = sc.next();
-			registerCourse(inp);
-
-			break;
-
-		case 2:
-			//viewreportcard();
-			studentMenu();
-			break;
-
-		case 3:
-			viewCatalog();
-			studentMenu();
-			break;
-
-		case 4:
-			course();
-			studentMenu();
-			break;
-
-		case 5:
-			payFee();
-			studentMenu();
-			break;
-		case 7:
-			
-			viewStudents();
-			studentMenu();
-			break;
-		case 6:
-			//CRSApplication.optionSelect();
-			break;
-
-		}
-
-	}
+	
 
 }

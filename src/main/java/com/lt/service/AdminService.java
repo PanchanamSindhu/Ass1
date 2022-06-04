@@ -22,10 +22,10 @@ public interface AdminService {
 
 	public Report generateReportCard(int id);
 
-	public void addCourse();
+	public List<Course> addCourse(List<Course> course);
 	
-	public void removeCourse();
+	public String removeCourse(String courseId);
 	
-	public void loginList();
+	public List<Course> courses();
 
 }

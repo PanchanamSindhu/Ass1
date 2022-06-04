@@ -4,8 +4,22 @@ public class Course {
 
 	private String courseCode;
 	private String courseName;
-	private boolean isOffered;
+	private String isOffered;
 	private String instructor;
+
+	/**
+	 * @return the isOffered
+	 */
+	public String getIsOffered() {
+		return isOffered;
+	}
+
+	/**
+	 * @param isOffered the isOffered to set
+	 */
+	public void setIsOffered(String isOffered) {
+		this.isOffered = isOffered;
+	}
 
 	public String getCourseCode() {
 		return courseCode;
@@ -23,19 +37,8 @@ public class Course {
 		this.courseName = courseName;
 	}
 
-	public boolean isOffered() {
-		return isOffered;
-	}
 
-	public void setOffered(boolean isOffered) {
-		this.isOffered = isOffered;
-	}
-
-	@Override
-	public String toString() {
-		return "Course [courseCode=" + courseCode + ", courseName=" + courseName + ", isOffered=" + isOffered
-				+ ", instructor=" + instructor + "]";
-	}
+	
 
 	public String getInstructor() {
 		return instructor;
