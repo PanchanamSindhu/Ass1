@@ -1,15 +1,15 @@
 package com.lt.service.impl;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lt.bean.Course;
+import com.lt.bean.RegisteredCourse;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 import com.lt.dao.AdminDao;
 import com.lt.dao.StudentDao;
 import com.lt.service.StudentService;
@@ -26,12 +26,14 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public List<Course> viewCatalog() {
 		return adminDao.courses();
-		
+
 	}
+	
 	@Override
-	public void registerCourse(String input) {
+	public String registerCourse(int StudentID, Student student) {
 		
-		studentDao.registerCourse(input);
+		studentDao.registerCourse(StudentID,student);
+		return "Course Registered Succesful !!!";
 
 	}
 
@@ -43,10 +45,9 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void viewStudents() {
+	public void registerStudent(Student student) {
 		
-		
-		studentDao.StudentDetails();
+		studentDao.registerStudent(student);
 	}
 
 	@Override

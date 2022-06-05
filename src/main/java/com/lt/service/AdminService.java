@@ -5,6 +5,7 @@ import java.util.List;
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 
 
 
@@ -27,5 +28,8 @@ public interface AdminService {
 	public String removeCourse(String courseId);
 	
 	public List<Course> courses();
+	
+	public int addStudent(Student student);
 
+	public List<Student> viewStudents();
 }

@@ -1,9 +1,14 @@
 package com.lt.service.impl;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lt.bean.Student;
+import com.lt.dao.ProfessorDao;
 import com.lt.service.ProfessorService;
 
 /**
@@ -14,10 +19,15 @@ import com.lt.service.ProfessorService;
  */
 @Service
 public class ProfessorServiceImpl implements ProfessorService {
+	
+	@Autowired
+	private ProfessorDao professorDao;
 
 	@Override
-	public void addGrades() {
-		
+	public Student addGrades(int studentID, Student student) {
+
+		return professorDao.addGrades(studentID, student);
+
 	}
 	
 	/**
@@ -27,8 +37,7 @@ public class ProfessorServiceImpl implements ProfessorService {
 	 */
 	@Override
 	public void viewRegisteredStudents() {
-		StudentServiceImpl studentService=new StudentServiceImpl();
-		studentService.viewStudents();
+		
 
 	}
 
@@ -37,50 +46,6 @@ public class ProfessorServiceImpl implements ProfessorService {
 	 * @param unused
 	 * @return nothing.
 	 */
-	@Override
-	public void selectCourses() {
-		CourseServiceImpl courseService = new CourseServiceImpl();
-		courseService.CoursesList();
-
-	}
-	/**
-	 * This method display  professor menu. 
-	 * @param unused
-	 * @return nothing.
-	 */
-	public  void professorMenu() {
-		System.out.println("===== Professor Memu =====");
-		System.out.println("Choose from following options:");
-		System.out.println("--------------");
-		System.out.println("1. View Teaching Courses : ");
-		System.out.println("2. View Enrolled Student : ");
-		System.out.println("3. Add Grades : ");
-		System.out.println("4. Logout : ");
-		
-		System.out.println("Enter your Option : \n");
-		Scanner sc= new Scanner(System.in);
-		int profChoice=sc.nextInt();
-		
-		switch (profChoice) {
-		case 1:
-			selectCourses();
-			professorMenu();
-			break;
-
-		case 2:
-			viewRegisteredStudents();
-			professorMenu();
-			break;
-
-		case 3:
-			//addGrades();
-			//professorMenu();
-			//break;
-		case 4:
-			//LtCrsG5SpringCoreApplication.optionSelect();
-
-		}	
-		
-	}
+	
 
 }

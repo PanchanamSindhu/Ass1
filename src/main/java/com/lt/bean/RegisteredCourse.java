@@ -1,17 +1,41 @@
 package com.lt.bean;
 
+import java.util.List;
+
 public class RegisteredCourse {
 
-	private String courseCode;
-	private Integer semster;
-	private Integer studentId;
-	private Grade grade;
+	private List<String> courseCode;
+	private int semster;
+	private int studentId;
+	private int marks;
 
-	public String getCourseCode() {
+	
+	/**
+	 * @return the marks
+	 */
+	public int getMarks() {
+		return marks;
+	}
+
+	/**
+	 * @param marks the marks to set
+	 */
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
+
+	
+	/**
+	 * @return the courseCode
+	 */
+	public List<String> getCourseCode() {
 		return courseCode;
 	}
 
-	public void setCourseCode(String courseCode) {
+	/**
+	 * @param courseCode the courseCode to set
+	 */
+	public void setCourseCode(List<String> courseCode) {
 		this.courseCode = courseCode;
 	}
 
@@ -29,14 +53,6 @@ public class RegisteredCourse {
 
 	public void setStudentId(Integer studentId) {
 		this.studentId = studentId;
-	}
-
-	public Grade getGrade() {
-		return grade;
-	}
-
-	public void setGrade(Grade grade) {
-		this.grade = grade;
 	}
 
 }

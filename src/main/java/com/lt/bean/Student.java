@@ -1,48 +1,26 @@
 package com.lt.bean;
 
 import java.util.List;
+import java.util.Map;
 
 public class Student {
 
-	private String studentId;
-	private String branch;
-    private List<Course> courses;
+	private int studentId;
 	private String studentName;
+    private List<String> courses;
+	private Map<String,String> grade;
+	
 	/**
 	 * @return the studentId
 	 */
-	public String getStudentId() {
+	public int getStudentId() {
 		return studentId;
 	}
 	/**
 	 * @param studentId the studentId to set
 	 */
-	public void setStudentId(String studentId) {
+	public void setStudentId(int studentId) {
 		this.studentId = studentId;
-	}
-	/**
-	 * @return the branch
-	 */
-	public String getBranch() {
-		return branch;
-	}
-	/**
-	 * @param branch the branch to set
-	 */
-	public void setBranch(String branch) {
-		this.branch = branch;
-	}
-	/**
-	 * @return the courses
-	 */
-	public List<Course> getCourses() {
-		return courses;
-	}
-	/**
-	 * @param courses the courses to set
-	 */
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
 	}
 	/**
 	 * @return the studentName
@@ -56,7 +34,30 @@ public class Student {
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
-
+	/**
+	 * @return the courses
+	 */
+	public List<String> getCourses() {
+		return courses;
+	}
+	/**
+	 * @param courses the courses to set
+	 */
+	public void setCourses(List<String> courses) {
+		this.courses = courses;
+	}
+	/**
+	 * @return the grade
+	 */
+	public Map<String, String> getGrade() {
+		return grade;
+	}
+	/**
+	 * @param grade the grade to set
+	 */
+	public void setGrade(Map<String, String> grade) {
+		this.grade = grade;
+	}
 	
-
-}
+	
+}	

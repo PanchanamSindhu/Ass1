@@ -14,6 +14,7 @@ import com.lt.bean.Admin;
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 import com.lt.dao.AdminDao;
 import com.lt.service.AdminService;
 
@@ -101,6 +102,18 @@ public class AdminServiceImpl implements AdminService {
 	public List<Course> courses() {
 		
 		return adminDao.courses();
+	}
+
+	@Override
+	public int addStudent(Student student) {
+		
+		return adminDao.addStudent(student);
+	}
+
+	@Override
+	public List<Student> viewStudents() {
+		
+		return adminDao.viewStudents();
 	}
 
 }

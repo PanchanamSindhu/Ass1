@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lt.bean.Course;
+import com.lt.bean.RegisteredCourse;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 
 /**
  * Interface class that has the following methods.
@@ -14,7 +16,7 @@ import com.lt.bean.Report;
  */
 public interface StudentService {
 
-	public void registerCourse(String input);
+	public String registerCourse(int studentId,Student student);
 
 	public Report viewreportcard(int id);
 
@@ -24,7 +26,7 @@ public interface StudentService {
 
 	public void course();
 	
-	public void viewStudents();
+	public void registerStudent(Student student);
 	
 
 }

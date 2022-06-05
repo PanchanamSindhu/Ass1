@@ -1,13 +1,27 @@
 package com.lt.bean;
 
-import java.util.List;
 
 public class Report {
 
 	private int studentId;
 	private Integer semester;
 	private float cgpa;
-	private List<RegisteredCourse> registeredCourses;
+	private RegisteredCourse registeredCourses;
+
+	
+	/**
+	 * @return the registeredCourses
+	 */
+	public RegisteredCourse getRegisteredCourses() {
+		return registeredCourses;
+	}
+
+	/**
+	 * @param registeredCourses the registeredCourses to set
+	 */
+	public void setRegisteredCourses(RegisteredCourse registeredCourses) {
+		this.registeredCourses = registeredCourses;
+	}
 
 	public int getStudentId() {
 		return studentId;
@@ -33,12 +47,6 @@ public class Report {
 		this.cgpa = cgpa;
 	}
 
-	public List<RegisteredCourse> getRegisteredCourses() {
-		return registeredCourses;
-	}
-
-	public void setRegisteredCourses(List<RegisteredCourse> registeredCourses) {
-		this.registeredCourses = registeredCourses;
-	}
+	
 
 }

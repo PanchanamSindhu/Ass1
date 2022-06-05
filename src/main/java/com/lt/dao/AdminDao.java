@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 
 @Repository
 public class AdminDao implements AdminDaoInterface {
 
-	@Autowired
-	private StudentDao studentDao;
-	
 	static List<Course> courseList = new ArrayList<Course>();
+	static List<Student> StudentList = new ArrayList<Student>();
+	static List<Professor> profList = new ArrayList<Professor>();
 
 	/**
 	 * 
@@ -27,12 +27,11 @@ public class AdminDao implements AdminDaoInterface {
 	@Override
 	public List<Professor> addProfessor(List<Professor> pf) {
 
-		List<Professor> prof = new ArrayList<Professor>();
 		for (Professor p : pf) {
 
-			prof.add(p);
+			profList.add(p);
 		}
-		return prof;
+		return profList;
 	}
 
 	@Override
@@ -47,9 +46,9 @@ public class AdminDao implements AdminDaoInterface {
 	 */
 	@Override
 	public Report generateReportCard(int id) {
+		return null;
 
-		Report report= studentDao.viewreportcard(id);
-		return report;
+		
 
 	}
 
@@ -89,6 +88,21 @@ public class AdminDao implements AdminDaoInterface {
 	public List<Course> courses() {
 		
 		return courseList;
+	}
+
+	@Override
+	public int addStudent(Student student) {
+		Student s1=new Student();
+		s1.setStudentId(student.getStudentId());
+		s1.setStudentName(student.getStudentName());
+		StudentList.add(s1);
+		return s1.getStudentId();
+	}
+
+	@Override
+	public List<Student> viewStudents() {
+		// TODO Auto-generated method stub
+		return StudentList;
 	}
 
 }

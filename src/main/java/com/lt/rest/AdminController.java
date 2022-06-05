@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lt.bean.Course;
 import com.lt.bean.Professor;
 import com.lt.bean.Report;
+import com.lt.bean.Student;
 import com.lt.service.impl.AdminServiceImpl;
 
 @RestController
@@ -31,7 +33,7 @@ public class AdminController {
 
 	List<Course> pl = new ArrayList<Course>();
 
-	@PostMapping(value = "/post/professor")
+	@PostMapping(value = "/addProfessor")
 	public ResponseEntity<List<Professor>> addProfessor(@RequestBody List<Professor> professor) {
 
 		List<Professor> pl = adminService.addProfessor(professor);
@@ -46,7 +48,7 @@ public class AdminController {
 		return new ResponseEntity<Report>(report, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/post/course")
+	@PostMapping(value = "/addCourse")
 	public ResponseEntity<List<Course>> addCourse(@RequestBody List<Course> course) {
 
 		pl.addAll(adminService.addCourse(course));
@@ -61,11 +63,28 @@ public class AdminController {
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
 	}
 
-	@RequestMapping(produces = MediaType.APPLICATION_JSON, method = RequestMethod.GET, value = "/courses")
+	@RequestMapping(produces = MediaType.APPLICATION_JSON, method = RequestMethod.GET, value = "/getCourses")
 	@ResponseBody
 	public ResponseEntity<List<Course>> courses() {
 		List<Course> allCourses = adminService.courses();
 		return new ResponseEntity<List<Course>>(allCourses, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/addStudent")
+	public ResponseEntity<Integer> addStudent(@RequestBody Student student) {
+
+		int id=adminService.addStudent(student);
+		return new ResponseEntity<Integer>(id,HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(produces = MediaType.APPLICATION_JSON, method = RequestMethod.GET, value = "/viewStudents")
+	@ResponseBody
+	public ResponseEntity<List<Student>> viewStudents() {
+
+		adminService.viewStudents();
+		return new ResponseEntity<List<Student>>(adminService.viewStudents(),HttpStatus.OK);
+
 	}
 
 }
