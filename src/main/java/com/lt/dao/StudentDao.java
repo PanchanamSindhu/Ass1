@@ -89,8 +89,10 @@ public class StudentDao implements StudentDaoInterface {
 				if (s.getPassword().equals(student.getPassword())) {
 					msg = "Login succesfull";
 				} else {
-					msg = "Invalid creditentials";
+					msg = "Invalid creditentials.Please Enter valid username and Password";
 				}
+			}else {
+				msg = "Please Enter Correct ID";
 			}
 		}
 		return msg;
