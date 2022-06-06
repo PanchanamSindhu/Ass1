@@ -89,7 +89,7 @@ public class StudentController {
 	
 	@RequestMapping(produces = MediaType.APPLICATION_JSON, method = RequestMethod.DELETE, value = "/deleteCourse/{courseCode}/{id}")
 	@ResponseBody
-	public ResponseEntity<Student> deleteCourse(@PathVariable("courseCode") String courseCode ,@PathVariable("id") int studentId) {
+	public ResponseEntity<Student> deleteCourse(@PathVariable("courseCode") String courseCode ,@PathVariable("id") int studentId)  {
 		Student s=studentService.removeCourse(courseCode,studentId);
 		return new ResponseEntity<Student>(s, HttpStatus.OK);
 	}

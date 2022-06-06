@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.lt.bean.Report;
 import com.lt.bean.Student;
 import com.lt.exception.CourseNotFoundException;
-import com.lt.exception.StudentNotFoundException;
+
 
 
 @Repository
