@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +23,14 @@ import com.lt.bean.Report;
 import com.lt.bean.Student;
 import com.lt.service.impl.AdminServiceImpl;
 
+/**
+ * This is the Controller uses @RestController annotation and 
+ * allows the class to handle the requests made by the client.
+ * 
+ * @param args unused.
+ * @return Nothing.
+ * 
+ */
 @RestController
 @CrossOrigin
 public class AdminController {
@@ -32,7 +39,14 @@ public class AdminController {
 	private AdminServiceImpl adminService;
 
 	List<Course> pl = new ArrayList<Course>();
-
+	
+	/**
+	 * This method uses @PostMapping annotation it handles the 
+	 * HTTP POST requests matched with given URI expression
+	 * 
+	 * @param args unused.
+	 * @return ResponseEntity<List<Professor>>.
+	 */
 	@PostMapping(value = "/addProfessor")
 	public ResponseEntity<List<Professor>> addProfessor(@RequestBody List<Professor> professor) {
 
@@ -41,6 +55,13 @@ public class AdminController {
 
 	}
 
+	/**
+	 * This method uses @GetMapping annotation it handles the 
+	 * HTTP Get requests matched with given URI expression
+	 * 
+	 * @param args unused.
+	 * @return ResponseEntity<Report>.
+	 */
 	@RequestMapping(produces = MediaType.APPLICATION_JSON, method = RequestMethod.GET, value = "/reportCard/{id}")
 	@ResponseBody
 	public ResponseEntity<Report> generateReportCard(@PathVariable("id") int id) {

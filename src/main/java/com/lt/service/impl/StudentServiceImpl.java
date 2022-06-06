@@ -50,21 +50,12 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.registerStudent(student);
 	}
 
+
 	@Override
-	public void payFee() {
+	public Student removeCourse(String courseID,int studentID) {
 		// TODO Auto-generated method stub
+		return studentDao.removeCourse(courseID,studentID);
 		
-		//studentDao.payFee(i);
-
-	}
-
-	@Override
-	public void course() {
-		// TODO Auto-generated method stub
-	
-		ArrayList a = new ArrayList();
-		a = studentDao.course();
-
 	}
 
 

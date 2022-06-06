@@ -20,11 +20,7 @@ public interface StudentDaoInterface {
 
 	public Report viewreportcard(int i);
 
-	public void payFee(int i);
-
-	public void viewFee();
-
-	public ArrayList course();
+	public Student removeCourse(String courseID,int studentID);
 	
 	public void registerStudent(Student student);
 	

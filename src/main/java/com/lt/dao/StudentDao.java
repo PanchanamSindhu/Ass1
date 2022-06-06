@@ -1,33 +1,20 @@
 package com.lt.dao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.lt.bean.Course;
-import com.lt.bean.RegisteredCourse;
 import com.lt.bean.Report;
 import com.lt.bean.Student;
 import com.lt.exception.CourseNotFoundException;
-import com.lt.exception.PaymentDeclineException;
 import com.lt.exception.StudentNotFoundException;
-import com.lt.service.impl.StudentServiceImpl;
+
 
 @Repository
 public class StudentDao implements StudentDaoInterface {
 	
 	@Autowired
 	 AdminDao adminDao;
-
-	static List<RegisteredCourse> registeredCourse;
 
 	@Override
 	public void registerCourse(int id, Student stundet) {
@@ -70,26 +57,27 @@ public class StudentDao implements StudentDaoInterface {
 		return report;
 
 	}
-
-
-	@Override
-	public void payFee(int i) {}
-
-	@Override
-	public void viewFee() {
-		// TODO Auto-generated method stub
-		System.out.println("Fee Paied Succesfully!!");
-
-	}
+	
 	@Override
 	public void registerStudent(Student student) {
 		adminDao.addStudent(student);
 		
 	}
+	
 
 	@Override
-	public ArrayList course() {
-		return null;
+	public Student removeCourse(String courseID,int  studentID) {
+		Student s1=new Student();
+		for(Student s:adminDao.viewStudents()) {
+			if(s.getStudentId()==studentID) {
+				
+				s.getCourses().remove(courseID);
+				s1=s;
+			}else {
+				throw new CourseNotFoundException("Invalid Course Code .please Enter valid code" );
+			}
+		}
+		return s1;
 		
 	}
 

@@ -22,9 +22,7 @@ public interface StudentService {
 
 	public List<Course> viewCatalog();
 
-	public void payFee();
-
-	public void course();
+	public Student removeCourse(String courseID, int studentID);
 	
 	public void registerStudent(Student student);
 	
