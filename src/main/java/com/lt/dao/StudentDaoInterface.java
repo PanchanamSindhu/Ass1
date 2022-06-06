@@ -24,6 +24,7 @@ public interface StudentDaoInterface {
 	
 	public void registerStudent(Student student);
 	
+	public String login(int id, Student student);
 
 
 }

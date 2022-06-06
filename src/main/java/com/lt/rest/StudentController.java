@@ -50,6 +50,14 @@ public class StudentController {
 
 	}
 	
+	@PostMapping("/loginStudent/{studentId}")
+	public ResponseEntity<String> loginStudent(@PathVariable("studentId") int studentId ,@RequestBody Student student) {
+
+		studentService.login(studentId,student);
+		return new ResponseEntity<String>(studentService.login(studentId,student), HttpStatus.OK);
+
+	}
+	
 	/**
 	 * This method uses @GetMapping annotation it handles the 
 	 * HTTP POST requests matched with given URI expression

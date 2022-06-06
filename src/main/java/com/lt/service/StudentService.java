@@ -26,5 +26,7 @@ public interface StudentService {
 	
 	public void registerStudent(Student student);
 	
+	public String login(int id, Student student);
+	
 
 }

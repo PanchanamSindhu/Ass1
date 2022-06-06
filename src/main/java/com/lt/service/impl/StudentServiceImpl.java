@@ -58,6 +58,12 @@ public class StudentServiceImpl implements StudentService {
 		
 	}
 
+	@Override
+	public String login(int id, Student student) {
+		
+		return studentDao.login(id, student);
+	}
+
 
 	
 

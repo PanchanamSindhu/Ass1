@@ -81,4 +81,20 @@ public class StudentDao implements StudentDaoInterface {
 		
 	}
 
+	@Override
+	public String login(int id, Student student) {
+		String msg="";
+		for (Student s : adminDao.viewStudents()) {
+			if (s.getStudentId() == id) {
+				if (s.getPassword().equals(student.getPassword())) {
+					msg = "Login succesfull";
+				} else {
+					msg = "Invalid creditentials";
+				}
+			}
+		}
+		return msg;
+		
+	}
+
 }

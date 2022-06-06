@@ -40,6 +40,7 @@ public class AdminController {
 
 	List<Course> pl = new ArrayList<Course>();
 	
+
 	/**
 	 * This method uses @PostMapping annotation it handles the 
 	 * HTTP POST requests matched with given URI expression

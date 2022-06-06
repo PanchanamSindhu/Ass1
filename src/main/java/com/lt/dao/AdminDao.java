@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.lt.bean.Course;
@@ -14,6 +15,8 @@ import com.lt.bean.Student;
 
 @Repository
 public class AdminDao implements AdminDaoInterface {
+	
+	private static final Logger logger=LoggerFactory.getLogger(AdminDao.class);
 
 	static List<Course> courseList = new ArrayList<Course>();
 	static List<Student> StudentList = new ArrayList<Student>();
@@ -68,6 +71,9 @@ public class AdminDao implements AdminDaoInterface {
 			courseObj.setInstructor(course.getInstructor());
 			courseList.add(courseObj);
 		}
+		logger.debug("List of Courses: "+courseList);
+		logger.info("List of Courses");
+		logger.error("List of Courses");
 		return courseList;
 	}
 
@@ -95,6 +101,7 @@ public class AdminDao implements AdminDaoInterface {
 		Student s1=new Student();
 		s1.setStudentId(student.getStudentId());
 		s1.setStudentName(student.getStudentName());
+		s1.setPassword(student.getPassword());
 		StudentList.add(s1);
 		return s1.getStudentId();
 	}
